@@ -7,7 +7,7 @@ def msg():
     return "Hello World! Deployed uding Argo CD!"
 
 @app.route('/argocd')
-def msg():
+def argocd_msg():
     return "Isn't Argo CD pretty amazing?"
 
 if __name__ == "__main__":
