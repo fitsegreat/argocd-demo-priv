@@ -20,7 +20,7 @@ spec:
       - name: regcred
       containers:
       - name: hello-deployment
-        image: fitse/hello-app:v1
+        image: fitse/hello-app:v2
         imagePullPolicy: Always
         resources:
           limits:
