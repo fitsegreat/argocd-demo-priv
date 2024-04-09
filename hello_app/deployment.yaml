@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-app
+  name: hello-deployment
+  annotations:
+    link.argocd.argoproj.io/external-link: https://hub.docker.com/repository/docker/fitse/hello-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: hello-deployment
+        image: fitse/hello-app:v1
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
